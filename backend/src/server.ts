@@ -29,6 +29,17 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
   next();
 });
 
+// Root Welcome Route
+app.get('/', (_req: Request, res: Response) => {
+  res.json({
+    service: 'SK Polychem Industries — B2B Industrial REST API',
+    status: 'online',
+    version: '1.0.0',
+    documentation: '/api',
+    health: '/api/health'
+  });
+});
+
 // API Root info
 app.get('/api', (_req: Request, res: Response) => {
   res.json({
