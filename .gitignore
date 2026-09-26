@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+build/
+*/dist/
+*/build/
+
+# Environment files & Secrets
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Cache & Tooling
+.cache/
+.vite/
+*/.vite/
+*.tsbuildinfo
+vite.config.*.timestamp-*
+
+# Logs
+logs/
+*.log
+*-debug.log*
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# System & OS junk
+.DS_Store
+Thumbs.db
+
+# Platform-specific
+/.figma/design-context/
+/.plugins/
+/.opencode-skills/
+.claude-replay.*
+.tmp-*
+

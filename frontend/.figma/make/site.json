@@ -1,0 +1,10 @@
+{
+  "description": "This B2B industrial website offers a comprehensive product catalog and fast quotation services for high-performance hoses and pneumatic solutions, ensuring quality and efficiency for businesses.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

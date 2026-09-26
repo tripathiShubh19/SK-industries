@@ -1,0 +1,145 @@
+{
+  "rfqs": [
+    {
+      "name": "Aarav Sharma",
+      "company": "Apex Hydraulics",
+      "email": "aarav@apex.in",
+      "phone": "+919811122233",
+      "productCategory": "PU Tubing & Recoil Coils (PU Series)",
+      "requiredQty": "PU08 500m",
+      "id": "RFQ-2026-7085",
+      "createdAt": "2026-09-26T18:47:29.060Z",
+      "updatedAt": "2026-09-26T18:47:29.060Z",
+      "status": "received",
+      "estimatedQuoteTurnaround": "Within 24 Hours",
+      "timeline": [
+        {
+          "status": "received",
+          "title": "RFQ Registered at Noida Works",
+          "description": "Specification queued for immediate technical and pricing assessment.",
+          "timestamp": "2026-09-26T18:47:29.060Z"
+        }
+      ]
+    },
+    {
+      "id": "RFQ-2026-8812",
+      "createdAt": "2026-09-26T00:43:42.139Z",
+      "updatedAt": "2026-09-26T14:43:42.140Z",
+      "name": "Rajesh Varma",
+      "company": "Tata Motors Ancillary Division",
+      "email": "rajesh.varma@tataancillary.com",
+      "phone": "+91 98230 44910",
+      "productCategory": "Thermoplastic Multipurpose Hose (TM Series)",
+      "requiredQty": "TM-08, 10mm ID, WP 20 Bar — 1,500 meters in 100m reels",
+      "deliveryLocation": "Pune Plant, Maharashtra",
+      "notes": "Require mill test certificate (MTC) and IS 447 batch conformance reports with dispatch.",
+      "status": "quote_prepared",
+      "estimatedQuoteTurnaround": "Within 24 Hours",
+      "quotedAmount": "₹ 1,87,500 + GST",
+      "assignedEngineer": "Er. Vikrant Sharma (Sr. Polymer Engineer)",
+      "engineerRemarks": "Recommended TM-08 with oil-resistant blue cover. MTC and burst pressure test logs ready for dispatch attachment.",
+      "timeline": [
+        {
+          "status": "received",
+          "title": "RFQ Received at Factory Desk",
+          "description": "Specification logged and assigned to technical engineering desk.",
+          "timestamp": "2026-09-26T00:43:42.140Z"
+        },
+        {
+          "status": "engineering_review",
+          "title": "Technical Feasibility Approved",
+          "description": "Compound formulation and burst pressure verified against IS 447 Class 2.",
+          "timestamp": "2026-09-26T08:43:42.140Z"
+        },
+        {
+          "status": "quote_prepared",
+          "title": "Commercial Quotation Released",
+          "description": "Factory-direct discounted quote generated with 5-day dispatch commitment.",
+          "timestamp": "2026-09-26T14:43:42.140Z"
+        }
+      ]
+    },
+    {
+      "id": "RFQ-2026-8945",
+      "createdAt": "2026-09-26T16:43:42.140Z",
+      "updatedAt": "2026-09-26T17:43:42.140Z",
+      "name": "Ananya Deshmukh",
+      "company": "Godrej Process Solutions",
+      "email": "ananya.d@godrej-proc.com",
+      "phone": "+91 98110 99231",
+      "productCategory": "PU Tubing & Recoil Coils (PU Series)",
+      "requiredQty": "PU06 (8x5.5mm) High-Flex Blue — 4,000 meters + 50 Recoil Assemblies (10m working)",
+      "deliveryLocation": "Vikhroli, Mumbai",
+      "notes": "For automated pick-and-place gantry systems. Requires tight tolerance (+/- 0.05mm).",
+      "status": "engineering_review",
+      "estimatedQuoteTurnaround": "Within 4 Hours",
+      "assignedEngineer": "Er. Amit Verma",
+      "engineerRemarks": "Batch extrusion schedule checked. Ether-grade TPU material allocated.",
+      "timeline": [
+        {
+          "status": "received",
+          "title": "RFQ Received at Factory Desk",
+          "description": "Technical requirements submitted via web portal.",
+          "timestamp": "2026-09-26T16:43:42.140Z"
+        },
+        {
+          "status": "engineering_review",
+          "title": "Under Engineering Review",
+          "description": "Checking raw polymer inventory and coil manufacturing schedule.",
+          "timestamp": "2026-09-26T17:43:42.140Z"
+        }
+      ]
+    },
+    {
+      "id": "RFQ-2026-9020",
+      "createdAt": "2026-09-24T18:43:42.140Z",
+      "updatedAt": "2026-09-25T18:43:42.140Z",
+      "name": "Sunil Mehta",
+      "company": "L&T Heavy Engineering",
+      "email": "s.mehta@larsentoubro.com",
+      "phone": "+91 97234 11098",
+      "productCategory": "Air / Water Hose (AW Series)",
+      "requiredQty": "AW-25 (1\" ID) 10 Bar WP — 800 meters",
+      "deliveryLocation": "Hazira Works, Surat, Gujarat",
+      "notes": "For quarry utility compressor lines.",
+      "status": "dispatched",
+      "estimatedQuoteTurnaround": "Completed",
+      "quotedAmount": "₹ 1,44,000 + GST",
+      "assignedEngineer": "Er. Sandeep Rawat",
+      "engineerRemarks": "Dispatched via V-Trans Logistics. LR No: VT-2026-9812.",
+      "timeline": [
+        {
+          "status": "received",
+          "title": "RFQ Received",
+          "description": "Customer inquiry captured.",
+          "timestamp": "2026-09-24T18:43:42.140Z"
+        },
+        {
+          "status": "quote_prepared",
+          "title": "Quotation Approved",
+          "description": "Purchase Order PO-7892 received and approved.",
+          "timestamp": "2026-09-25T06:43:42.140Z"
+        },
+        {
+          "status": "dispatched",
+          "title": "Dispatched from Noida Works",
+          "description": "Dispatched via V-Trans Logistics with test certificate.",
+          "timestamp": "2026-09-25T18:43:42.140Z"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "id": "MSG-101",
+      "createdAt": "2026-09-26T06:43:42.140Z",
+      "name": "Karan Singhal",
+      "company": "Precision Hydraulics & Seals",
+      "email": "karan@precisionhyd.in",
+      "phone": "+91 99100 88219",
+      "subject": "Authorized Dealership for Western Region",
+      "message": "We are a major industrial distributor in Pune & Aurangabad. Interested in stocking SK Polychem TM and PU lines.",
+      "status": "new"
+    }
+  ]
+}
