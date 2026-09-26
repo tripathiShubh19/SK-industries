@@ -201,11 +201,10 @@ export default function Contact() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`w-full sm:w-auto px-4 py-2.5 rounded-lg text-xs font-bold transition-all shadow-sm text-center ${
-                  activeTab === tab.id
+                className={`w-full sm:w-auto px-4 py-2.5 rounded-lg text-xs font-bold transition-all shadow-sm text-center ${activeTab === tab.id
                     ? 'bg-[#F59E0B] text-slate-900 shadow-amber-500/20'
                     : 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>

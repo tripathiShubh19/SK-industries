@@ -3,26 +3,35 @@ import { z } from 'zod';
 import { db } from '../models/db.js';
 import { RfqStatus } from '../models/types.js';
 
+// HTML / Script tag sanitizer
+const sanitize = (val?: string) => val ? val.replace(/<[^>]*>?/gm, '').trim() : '';
+
 const rfqSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  company: z.string().min(2, 'Company name is required'),
-  email: z.string().email('Please enter a valid business email address'),
-  phone: z.string().min(7, 'Please provide a valid contact number'),
-  productCategory: z.string().min(2, 'Please select a product category'),
-  requiredQty: z.string().min(3, 'Please describe your required quantity and technical specs'),
-  deliveryLocation: z.string().optional(),
-  notes: z.string().optional()
+  name: z.string().min(2, 'Name must be at least 2 characters').max(100).transform(sanitize),
+  company: z.string().min(2, 'Company name is required').max(150).transform(sanitize),
+  email: z.string().email('Please enter a valid business email address').max(100).transform(v => v.toLowerCase().trim()),
+  phone: z.string().min(7, 'Please provide a valid contact number').max(30).transform(sanitize),
+  productCategory: z.string().min(2, 'Please select a product category').max(100).transform(sanitize),
+  requiredQty: z.string().min(3, 'Please describe your required quantity and technical specs').max(1000).transform(sanitize),
+  deliveryLocation: z.string().max(200).optional().transform(sanitize),
+  notes: z.string().max(1000).optional().transform(sanitize),
+  // Honeypot field: Bots will fill this, humans will not see it
+  websiteUrl: z.string().optional()
 });
 
 const statusUpdateSchema = z.object({
   status: z.enum(['received', 'engineering_review', 'quote_prepared', 'approved', 'rejected', 'dispatched']),
-  engineerRemarks: z.string().optional(),
-  quotedAmount: z.string().optional()
+  engineerRemarks: z.string().max(500).optional().transform(sanitize),
+  quotedAmount: z.string().max(100).optional().transform(sanitize)
 });
 
 import { sendEmailAlert } from '../services/email.service.js';
 
 export const submitRfq = async (req: Request, res: Response) => {
+  // Silent Bot Trap: If honeypot is filled, return fake success without doing anything
+  if (req.body.websiteUrl) {
+    return res.status(200).json({ success: true, message: 'RFQ registered.' });
+  }
   const result = rfqSchema.safeParse(req.body);
   if (!result.success) {
     return res.status(400).json({

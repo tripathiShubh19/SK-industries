@@ -1,5 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import productsRoutes from './routes/products.routes.js';
 import rfqsRoutes from './routes/rfqs.routes.js';
@@ -11,16 +13,56 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// CORS configuration
+// 1. HTTP Security Headers with Helmet
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
+// 2. Strict / Secure CORS Whitelist
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:8443',
+  'http://localhost:3000',
+  'https://sk-industries-sigma.vercel.app',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
+];
+
 app.use(cors({
-  origin: '*', // Allow frontend dev server
+  origin: (origin, callback) => {
+    // Allow non-browser requests (e.g. mobile apps, curl, server-to-server) or whitelisted origins
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    callback(new Error('Blocked by CORS security policy.'));
+  },
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Body parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// 3. Global Rate Limiter: Max 100 requests per 15 mins per IP
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 150,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Too many requests from this IP. Please try again after 15 minutes.' }
+});
+app.use('/api', globalLimiter);
+
+// 4. Stricter Anti-Spam Rate Limiter for RFQ and Contact form submissions: Max 10 per 15 mins
+const formSubmitLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Inquiry limit reached. Please wait 15 minutes before submitting another quote or contact us directly on WhatsApp.' }
+});
+app.use('/api/rfqs', formSubmitLimiter);
+app.use('/api/contact', formSubmitLimiter);
+
+// 5. Body parsing with strict payload limits (Prevents Large Payload DOS)
+app.use(express.json({ limit: '50kb' }));
+app.use(express.urlencoded({ extended: true, limit: '50kb' }));
 
 // Request logger
 app.use((req: Request, _res: Response, next: NextFunction) => {
